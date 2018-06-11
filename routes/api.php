@@ -16,3 +16,19 @@ use Illuminate\Http\Request;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+
+
+/*
+|--------------------------------------------------------------------------
+| Films Routes
+|--------------------------------------------------------------------------
+| {url}/films/*
+*/
+Route::group(['prefix' => 'films'], function () {
+	Route::get('/', 'Api\FilmController@FunctionName');
+	Route::post('login', 'Api\Auth\LoginController@posUsertLogin');
+	Route::post('create', 'Api\UserController@postCreateUser');
+	Route::post('update', 'Api\UserController@postUpdateUser');
+});
+
