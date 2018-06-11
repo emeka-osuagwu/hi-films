@@ -114,7 +114,7 @@ class AuthController extends Controller
         if (!Auth::attempt(['email' => $request['email'], 'password' => $request['password']])) {    
 
             $response = "invalid email or password";
-            
+
             /*
             |--------------------------------------------------------------------------
             | Send Api response
@@ -129,6 +129,5 @@ class AuthController extends Controller
         |--------------------------------------------------------------------------
         */
         return sendResponse(Auth::user(), 200);
-
     }
 }
