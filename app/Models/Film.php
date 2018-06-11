@@ -22,4 +22,14 @@ class Film extends Model
         'genre',
         'photo',
     ];
+
+    /*
+    |--------------------------------------------------------------------------
+    | Films Comments
+    |--------------------------------------------------------------------------
+    */
+    public function comments()
+    {
+        return $this->hasMany('App\Models\Comment');
+    }
 }

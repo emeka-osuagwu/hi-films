@@ -37,27 +37,50 @@ class FilmController extends Controller
 		$this->filmValidation = $filmValidation;
 	}
 
+    /*
+    |--------------------------------------------------------------------------
+    | Handles: fetching all films
+    | Params: Non
+    |--------------------------------------------------------------------------
+    */
+    public function getAllFilms()
+    {
+        /*
+        |--------------------------------------------------------------------------
+        | get all films from Films service
+        |--------------------------------------------------------------------------
+        */
+        $films = $this->filmService->getAllFilms();
+
+        /*
+        |--------------------------------------------------------------------------
+        | Send Api response
+        |--------------------------------------------------------------------------
+        */
+        return sendResponse($films, 200);
+    }
+
 	/*
 	|--------------------------------------------------------------------------
-	| Handles: fetching all films
-	| Params: Non
+	| Handles: fetching single films
+	| Params: film id
 	|--------------------------------------------------------------------------
 	*/
-    public function getAllFilms()
+    public function getFilm($id)
     {
     	/*
     	|--------------------------------------------------------------------------
-    	| get all films from Films service
+    	| get film from Films service
     	|--------------------------------------------------------------------------
     	*/
-    	$films = $this->filmService->getAllFilms();
+    	$film = $this->filmService->getFilmBy('id', $id)->get();
 
     	/*
     	|--------------------------------------------------------------------------
     	| Send Api response
     	|--------------------------------------------------------------------------
     	*/
-    	return sendResponse($films, 200);
+    	return sendResponse($film, 200);
     }
 
     /*

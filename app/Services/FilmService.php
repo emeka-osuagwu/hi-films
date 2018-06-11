@@ -16,7 +16,19 @@ class FilmService
 	*/
 	public function getAllFilms()
 	{
-		return Film::get();
+		return Film::with('comments')->get();
+	}
+
+	/*
+	|--------------------------------------------------------------------------
+	| Name: getFilm
+	| Handles: fetching all films from database to controller
+	| Params: Non
+	|--------------------------------------------------------------------------
+	*/
+	public function getFilmBy($field, $value)
+	{
+		return Film::with('comments')->where($field, $value);
 	}
 
 	/*
