@@ -21,4 +21,19 @@ class UserValidation
 
 		return $validator;
 	}
+
+	/*
+	|--------------------------------------------------------------------------
+	| loginUserValidation
+	|--------------------------------------------------------------------------
+	*/
+	public function loginUserValidation($data)
+	{	
+		$validator = Validator::make($data, [
+			'email' => 'required|email|exists:users',
+			'password' => 'required|string',
+		]);
+
+		return $validator;
+	}
 }

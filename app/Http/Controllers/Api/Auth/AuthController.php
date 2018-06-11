@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Api\Auth;
 
+use Auth;
 use Illuminate\Http\Request;
 use App\Services\UserService;
 use App\Validations\UserValidation;
@@ -40,9 +41,9 @@ class AuthController extends Controller
 
     /*
     |--------------------------------------------------------------------------
-    | Name: register
+    | Name: postRegister
     | Handles: create user
-    | Params: Non
+    | Params: User Data
     |--------------------------------------------------------------------------
     */
     public function postRegister(Request $request)
@@ -77,5 +78,57 @@ class AuthController extends Controller
         |--------------------------------------------------------------------------
         */
         return sendResponse($response, 200);
+    }
+
+    /*
+    |--------------------------------------------------------------------------
+    | Name: postLogin
+    | Handles: login user
+    | Params: User data
+    |--------------------------------------------------------------------------
+    */
+    public function postLogin(Request $request)
+    {
+        /*
+        |--------------------------------------------------------------------------
+        | login user request validation
+        |--------------------------------------------------------------------------
+        */
+        $validator = $this->userValidation->loginUserValidation($request->all());
+
+        /*
+        |--------------------------------------------------------------------------
+        | check validation status
+        |--------------------------------------------------------------------------
+        */
+        if ($validator->fails()) 
+        {   
+            return sendResponse($validator->errors(), 400);
+        }
+
+        /*
+        |--------------------------------------------------------------------------
+        | authenticate user
+        |--------------------------------------------------------------------------
+        */
+        if (!Auth::attempt(['email' => $request['email'], 'password' => $request['password']])) {    
+
+            $response = "invalid email or password";
+            
+            /*
+            |--------------------------------------------------------------------------
+            | Send Api response
+            |--------------------------------------------------------------------------
+            */
+            return sendResponse($response, 200);            
+        }
+        
+        /*
+        |--------------------------------------------------------------------------
+        | Send Api response
+        |--------------------------------------------------------------------------
+        */
+        return sendResponse(Auth::user(), 200);
+
     }
 }

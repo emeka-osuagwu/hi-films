@@ -22,8 +22,8 @@ class FilmService
 	/*
 	|--------------------------------------------------------------------------
 	| Name: getFilm
-	| Handles: fetching all films from database to controller
-	| Params: Non
+	| Handles: fetching film from database to controller
+	| Params: Film Id or etc
 	|--------------------------------------------------------------------------
 	*/
 	public function getFilmBy($field, $value)

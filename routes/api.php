@@ -8,6 +8,7 @@
 */
 Route::group(['prefix' => 'user'], function () {
 	Route::post('register', 'Api\Auth\AuthController@postRegister');
+	Route::post('login', 'Api\Auth\AuthController@postLogin');
 });
 
 /*
