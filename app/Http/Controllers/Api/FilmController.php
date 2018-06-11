@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers\Api;
 
-use App\Services\FilmService;
 use Illuminate\Http\Request;
+use App\Services\FilmService;
+use App\Validations\FilmValidation;
 
 class FilmController extends Controller
 {
-
 	/*
 	|--------------------------------------------------------------------------
 	| filmService
@@ -17,9 +17,10 @@ class FilmController extends Controller
 
 	/*
 	|--------------------------------------------------------------------------
-	| employeeService
+	| filmValidation
 	|--------------------------------------------------------------------------
 	*/
+	protected $filmValidation;
 
 	/*
 	|--------------------------------------------------------------------------
@@ -28,10 +29,12 @@ class FilmController extends Controller
 	*/
 	public function __construct
 	(
-		FilmService $filmService
+		FilmService $filmService,
+		FilmValidation $filmValidation
 	)
 	{
 		$this->filmService = $filmService;
+		$this->filmValidation = $filmValidation;
 	}
 
 	/*
@@ -55,5 +58,45 @@ class FilmController extends Controller
     	|--------------------------------------------------------------------------
     	*/
     	return sendResponse($films, 200);
+    }
+
+    /*
+    |--------------------------------------------------------------------------
+    | Handles: comment on a film
+    | Params: Comment data
+    |--------------------------------------------------------------------------
+    */
+    public function postFilmComment(Request $request)
+    {
+    	/*
+    	|--------------------------------------------------------------------------
+    	| comment request validation
+    	|--------------------------------------------------------------------------
+    	*/
+    	$validator = $this->filmValidation->addFilmCommentValidation($request->all());
+
+    	/*
+    	|--------------------------------------------------------------------------
+    	| check validation status
+    	|--------------------------------------------------------------------------
+    	*/
+    	if ($validator->fails()) 
+    	{   
+    	    return sendResponse($validator->errors(), 400);
+    	}
+
+    	/*
+    	|--------------------------------------------------------------------------
+    	| create comment with filmService
+    	|--------------------------------------------------------------------------
+    	*/
+    	$response = $this->filmService->saveComment($request->all());
+
+    	/*
+    	|--------------------------------------------------------------------------
+    	| Send Api response
+    	|--------------------------------------------------------------------------
+    	*/
+    	return sendResponse($response, 200);
     }
 }

@@ -3,6 +3,7 @@
 namespace App\Services;
 
 use App\Models\Film;
+use App\Models\Comment;
 
 class FilmService
 {
@@ -16,6 +17,18 @@ class FilmService
 	public function getAllFilms()
 	{
 		return Film::get();
+	}
+
+	/*
+	|--------------------------------------------------------------------------
+	| Name: saveComment
+	| Handles: save user comment into database
+	| Params: Comment data
+	|--------------------------------------------------------------------------
+	*/
+	public function saveComment($data)
+	{
+		return Comment::create($data);
 	}
 }
 

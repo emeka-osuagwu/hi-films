@@ -15,6 +15,11 @@ class CreateFilmCommentTable extends Migration
     {
         Schema::create('comments', function (Blueprint $table) {
             $table->increments('id');
+            
+            $table->string('film_id');
+            $table->string('comment');
+            $table->string('name');
+            
             $table->timestamps();
         });
     }
