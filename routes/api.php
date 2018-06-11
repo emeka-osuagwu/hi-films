@@ -21,14 +21,21 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 /*
 |--------------------------------------------------------------------------
+| User Routes
+|--------------------------------------------------------------------------
+| {url}/user/*
+*/
+Route::group(['prefix' => 'user'], function () {
+	Route::post('register', 'Api\Auth\AuthController@postRegister');
+});
+
+/*
+|--------------------------------------------------------------------------
 | Films Routes
 |--------------------------------------------------------------------------
 | {url}/films/*
 */
 Route::group(['prefix' => 'films'], function () {
 	Route::get('/', 'Api\FilmController@getAllFilms');
-	Route::post('login', 'Api\Auth\LoginController@posUsertLogin');
-	Route::post('create', 'Api\UserController@postCreateUser');
-	Route::post('update', 'Api\UserController@postUpdateUser');
 });
 

@@ -10,7 +10,7 @@ class FilmController extends Controller
 
 	/*
 	|--------------------------------------------------------------------------
-	| employeeService
+	| filmService
 	|--------------------------------------------------------------------------
 	*/
 	protected $filmService;
@@ -42,14 +42,12 @@ class FilmController extends Controller
 	*/
     public function getAllFilms()
     {
-
     	/*
     	|--------------------------------------------------------------------------
     	| get all films from Films service
     	|--------------------------------------------------------------------------
     	*/
     	$films = $this->filmService->getAllFilms();
-
 
     	/*
     	|--------------------------------------------------------------------------
