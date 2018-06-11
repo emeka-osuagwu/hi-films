@@ -26,7 +26,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 | {url}/films/*
 */
 Route::group(['prefix' => 'films'], function () {
-	Route::get('/', 'Api\FilmController@FunctionName');
+	Route::get('/', 'Api\FilmController@getAllFilms');
 	Route::post('login', 'Api\Auth\LoginController@posUsertLogin');
 	Route::post('create', 'Api\UserController@postCreateUser');
 	Route::post('update', 'Api\UserController@postUpdateUser');
