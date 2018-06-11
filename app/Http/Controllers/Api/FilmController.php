@@ -51,6 +51,11 @@ class FilmController extends Controller
     	$films = $this->filmService->getAllFilms();
 
 
-    	
+    	/*
+    	|--------------------------------------------------------------------------
+    	| Send Api response
+    	|--------------------------------------------------------------------------
+    	*/
+    	return sendResponse($films, 200);
     }
 }
