@@ -64,7 +64,7 @@ class FilmController extends Controller
         | Send Api response
         |--------------------------------------------------------------------------
         */
-        return sendResponse($films, 200);
+        return sendResponse(['films' => $films, 'genres' => $genres], 200);
     }
 
     /*
