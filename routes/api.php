@@ -23,4 +23,5 @@ Route::group(['prefix' => 'films'], function () {
 	Route::get('/', 'Api\FilmController@getAllFilms');
 	Route::get('{slug}', 'Api\FilmController@getFilm');
 	Route::post('{id}/comment', 'Api\FilmController@postFilmComment');
+	Route::post('create', 'Api\FilmController@postFilmComment');
 });
