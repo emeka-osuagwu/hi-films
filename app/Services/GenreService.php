@@ -2,20 +2,20 @@
 
 namespace App\Services;
 
-use App\Models\User;
+use App\Models\Genre;
 
 class GenreService
 {
 	/*
 	|--------------------------------------------------------------------------
-	| Name: createUser
-	| Handles: inset new user into the database
+	| Name: getAllGenres
+	| Handles: fetch all genres to controller
 	| Params: user data
 	|--------------------------------------------------------------------------
 	*/
-	public function createUser($data)
+	public function getAllGenres()
 	{
-		return User::create($data);
+		return Genre::all();
 	}
 }
 

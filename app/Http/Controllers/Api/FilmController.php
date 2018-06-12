@@ -4,16 +4,24 @@ namespace App\Http\Controllers\Api;
 
 use Illuminate\Http\Request;
 use App\Services\FilmService;
+use App\Services\GenreService;
 use App\Validations\FilmValidation;
 
 class FilmController extends Controller
 {
+    /*
+    |--------------------------------------------------------------------------
+    | filmService
+    |--------------------------------------------------------------------------
+    */
+    protected $filmService;
+
 	/*
 	|--------------------------------------------------------------------------
-	| filmService
+	| genreService
 	|--------------------------------------------------------------------------
 	*/
-	protected $filmService;
+	protected $genreService;
 
 	/*
 	|--------------------------------------------------------------------------
@@ -29,11 +37,13 @@ class FilmController extends Controller
 	*/
 	public function __construct
 	(
-		FilmService $filmService,
+        FilmService $filmService,
+		GenreService $genreService,
 		FilmValidation $filmValidation
 	)
 	{
-		$this->filmService = $filmService;
+        $this->filmService = $filmService;
+		$this->genreService = $genreService;
 		$this->filmValidation = $filmValidation;
 	}
 
@@ -54,10 +64,10 @@ class FilmController extends Controller
 
         /*
         |--------------------------------------------------------------------------
-        | get all films from Films service
+        | get all genres from Genre service
         |--------------------------------------------------------------------------
         */
-        $genres = $this->filmService->getAllFilms();
+        $genres = $this->genreService->getAllGenres();
 
         /*
         |--------------------------------------------------------------------------
