@@ -103,7 +103,7 @@ class FilmController extends Controller
 	/*
 	|--------------------------------------------------------------------------
 	| Handles: fetching single films
-	| Params: film id
+	| Params: film slug
 	|--------------------------------------------------------------------------
 	*/
     public function getFilm($slug)
