@@ -21,7 +21,6 @@ class Film extends Model
         'rating',
         'ticket_price',
         'country',
-        'genre',
         'photo',
     ];
 

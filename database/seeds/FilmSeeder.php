@@ -32,7 +32,6 @@ class FilmSeeder extends Seeder
     		'rating' => rand(1, 5),
     		'ticket_price' => rand(1, 5) . rand(1, 100) . rand(1, 100) . rand(1, 1300),
     		'country' => $this->faker->country,
-    		'genre' => $this->faker->name,
     		'slug' => $this->faker->name
     	]);
 
@@ -45,7 +44,6 @@ class FilmSeeder extends Seeder
     		'rating' => rand(1, 5),
     		'ticket_price' => rand(1, 5) . rand(1, 100) . rand(1, 100) . rand(1, 1300),
     		'country' => $this->faker->country,
-    		'genre' => $this->faker->name,
     		'slug' => $this->faker->name
     	]);
     	
@@ -58,7 +56,6 @@ class FilmSeeder extends Seeder
     		'rating' => rand(1, 5),
     		'ticket_price' => rand(1, 5) . rand(1, 100) . rand(1, 100) . rand(1, 1300),
     		'country' => $this->faker->country,
-    		'genre' => $this->faker->name,
     		'slug' => $this->faker->name
     	]);
     }
