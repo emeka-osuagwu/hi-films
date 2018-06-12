@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Carbon\Carbon;
 use App\Models\FilmGenre;
+use Laravel\Cashier\Cashier;
 use Illuminate\Database\Eloquent\Model;
 
 class Film extends Model
@@ -24,6 +25,15 @@ class Film extends Model
         'ticket_price',
         'country',
         'photo',
+    ];
+
+    /*
+    |--------------------------------------------------------------------------
+    | appended fields
+    |--------------------------------------------------------------------------
+    */
+    protected $appends = [
+        'genres'
     ];
 
     /*
@@ -54,6 +64,27 @@ class Film extends Model
     public function getRealeaseDateAttribute($value)
     {
         return Carbon::parse($value)->diffForHumans();
+    }
+
+    /*
+    |--------------------------------------------------------------------------
+    | Convert Ticket price
+    |--------------------------------------------------------------------------
+    */
+    public function getTicketPriceAttribute($value)
+    {
+        Cashier::useCurrency('usd', '₦');
+        return Cashier::formatAmount($value);
+    }
+
+    /*
+    |--------------------------------------------------------------------------
+    | get film Genre
+    |--------------------------------------------------------------------------
+    */
+    public function getGenresAttribute($value)
+    {
+        return FilmGenre::where('film_id', $this->id)->get();
     }
 
     /*
