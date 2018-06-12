@@ -44,4 +44,14 @@ class Film extends Model
     {
         return $this->hasMany('App\Models\Comment');
     }
+
+    /*
+    |--------------------------------------------------------------------------
+    | Films Genre
+    |--------------------------------------------------------------------------
+    */
+    public function genres_list()
+    {
+        return $this->hasMany('App\Models\FilmGenre', 'film_id')->with('genre');
+    }
 }

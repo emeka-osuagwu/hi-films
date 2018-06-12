@@ -17,4 +17,16 @@ class FilmGenre extends Model
         'film_id',
         'genre_id',
     ];
+
+
+    /*
+    |--------------------------------------------------------------------------
+    | Films Comments
+    |--------------------------------------------------------------------------
+    */
+    public function genre()
+    {
+        return $this->hasMany('App\Models\Genre', 'id');
+    }
+
 }

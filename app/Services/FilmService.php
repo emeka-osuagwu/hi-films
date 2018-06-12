@@ -16,7 +16,7 @@ class FilmService
 	*/
 	public function getAllFilms()
 	{
-		return Film::with('comments')->get();
+		return Film::with('comments', 'genres_list')->get();
 	}
 
 	/*

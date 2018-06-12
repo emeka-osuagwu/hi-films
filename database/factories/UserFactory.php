@@ -31,7 +31,8 @@ $factory->define(App\Models\Genre::class, function (Faker $faker) {
 
 $factory->define(App\Models\FilmGenre::class, function (Faker $faker) {
     return [
-        'name' => $faker->name
+        'film_id' => rand(1, 3),
+        'genre_id' => rand(1, 50)
     ];
 });
 
