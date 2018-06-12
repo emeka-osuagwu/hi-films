@@ -17,7 +17,6 @@ class CreateFilmsTable extends Migration
             $table->increments('id');
             
             $table->string('name');
-            $table->string('name');
             $table->string('slug')->unique();
             $table->string('description');
             $table->string('image_url');

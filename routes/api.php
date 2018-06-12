@@ -19,6 +19,6 @@ Route::group(['prefix' => 'user'], function () {
 */
 Route::get('films', 'Api\FilmController@getAllFilms');
 Route::group(['prefix' => 'film'], function () {
-	Route::get('{id}', 'Api\FilmController@getFilm');
+	Route::get('{slug}', 'Api\FilmController@getFilm');
 	Route::post('{id}/comment', 'Api\FilmController@postFilmComment');
 });

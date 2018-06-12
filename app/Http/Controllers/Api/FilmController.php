@@ -66,14 +66,14 @@ class FilmController extends Controller
 	| Params: film id
 	|--------------------------------------------------------------------------
 	*/
-    public function getFilm($id)
+    public function getFilm($slug)
     {
     	/*
     	|--------------------------------------------------------------------------
     	| get film from Films service
     	|--------------------------------------------------------------------------
     	*/
-    	$film = $this->filmService->getFilmBy('id', $id)->get();
+    	$film = $this->filmService->getFilmBy('slug', $slug)->get();
 
     	/*
     	|--------------------------------------------------------------------------

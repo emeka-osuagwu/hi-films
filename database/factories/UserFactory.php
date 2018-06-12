@@ -28,10 +28,14 @@ $factory->define(App\Models\Film::class, function (Faker $faker) {
         'name' => $faker->name,
         'description' => $faker->name,
         'realease_date' => Carbon::now(),
+        'image_url' => "fkvdfjvdfjvkdfjkvdjfkdfk",
+        'video_url' => "fkvdfjvdfjvkdfjkvdjfkdfk",
         'rating' => rand(1, 5),
         'ticket_price' => rand(1, 5) . rand(1, 100) . rand(1, 100) . rand(1, 1300),
         'country' => $faker->name,
         'genre' => $faker->name,
+        'slug' => $faker->name,
+        'slug' => $faker->name,
         'photo' => "http://placehold.it/770x378",
     ];
 });
