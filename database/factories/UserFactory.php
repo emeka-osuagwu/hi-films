@@ -23,19 +23,29 @@ $factory->define(App\Models\User::class, function (Faker $faker) {
     ];
 });
 
+$factory->define(App\Models\Genre::class, function (Faker $faker) {
+    return [
+        'name' => $faker->name
+    ];
+});
+
+$factory->define(App\Models\FilmGenre::class, function (Faker $faker) {
+    return [
+        'name' => $faker->name
+    ];
+});
+
 $factory->define(App\Models\Film::class, function (Faker $faker) {
     return [
         'name' => $faker->name,
-        'description' => $faker->name,
+        'description' => $faker->text,
         'realease_date' => Carbon::now(),
-        'image_url' => "fkvdfjvdfjvkdfjkvdjfkdfk",
-        'video_url' => "fkvdfjvdfjvkdfjkvdjfkdfk",
+        'photo' => $faker->imageUrl($width = 640, $height = 480),
+        'video_url' => "https://www.youtube.com/watch?v=fLeJJPxua3E",
         'rating' => rand(1, 5),
         'ticket_price' => rand(1, 5) . rand(1, 100) . rand(1, 100) . rand(1, 1300),
-        'country' => $faker->name,
+        'country' => $faker->country,
         'genre' => $faker->name,
-        'slug' => $faker->name,
-        'slug' => $faker->name,
-        'photo' => "http://placehold.it/770x378",
+        'slug' => $faker->name
     ];
 });

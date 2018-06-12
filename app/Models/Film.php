@@ -16,7 +16,6 @@ class Film extends Model
         'name', 
         'slug', 
         'video_url', 
-        'image_url', 
         'description', 
         'realease_date',
         'rating',

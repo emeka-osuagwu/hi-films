@@ -19,7 +19,6 @@ class CreateFilmsTable extends Migration
             $table->string('name');
             $table->string('slug')->unique();
             $table->string('description');
-            $table->string('image_url');
             $table->string('video_url');
             $table->date('realease_date');
             $table->string('rating');
