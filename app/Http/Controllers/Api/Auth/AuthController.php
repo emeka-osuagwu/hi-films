@@ -120,7 +120,7 @@ class AuthController extends Controller
             | Send Api response
             |--------------------------------------------------------------------------
             */
-            return sendResponse($response, 200);            
+            return sendResponse($response, 400);            
         }
         
         /*

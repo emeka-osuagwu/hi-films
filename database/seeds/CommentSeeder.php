@@ -26,19 +26,19 @@ class CommentSeeder extends Seeder
         Comment::create([
             'name' => $this->faker->name,
             'film_id' => 1,
-            'film_id' => $this->faker->text,
+            'comment' => $this->faker->text,
         ]);
 
         Comment::create([
             'name' => $this->faker->name,
             'film_id' => 2,
-            'film_id' => $this->faker->text,
+            'comment' => $this->faker->text,
         ]);
 
     	Comment::create([
     		'name' => $this->faker->name,
             'film_id' => 3,
-    		'film_id' => $this->faker->text,
+    		'comment' => $this->faker->text,
     	]);
     }
 }
