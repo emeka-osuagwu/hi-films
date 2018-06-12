@@ -14,6 +14,9 @@ class Film extends Model
      */
     protected $fillable = [
         'name', 
+        'slug', 
+        'video_url', 
+        'image_url', 
         'description', 
         'realease_date',
         'rating',
@@ -22,6 +25,16 @@ class Film extends Model
         'genre',
         'photo',
     ];
+
+    /*
+    |--------------------------------------------------------------------------
+    | encrypt password
+    |--------------------------------------------------------------------------
+    */
+    public function setSlugAttribute($value)
+    {
+        $this->attributes['slug'] =  str_slug($value, '-');;
+    }
 
     /*
     |--------------------------------------------------------------------------
