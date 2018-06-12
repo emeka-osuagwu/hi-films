@@ -1,5 +1,7 @@
 <?php
 
+Route::get('snap-shot', 'Api\FilmController@getSnapShotData');
+
 /*
 |--------------------------------------------------------------------------
 | User Routes
@@ -17,8 +19,8 @@ Route::group(['prefix' => 'user'], function () {
 |--------------------------------------------------------------------------
 | {url}/films/*
 */
-Route::get('films', 'Api\FilmController@getAllFilms');
-Route::group(['prefix' => 'film'], function () {
+Route::group(['prefix' => 'films'], function () {
+	Route::get('/', 'Api\FilmController@getAllFilms');
 	Route::get('{slug}', 'Api\FilmController@getFilm');
 	Route::post('{id}/comment', 'Api\FilmController@postFilmComment');
 });
