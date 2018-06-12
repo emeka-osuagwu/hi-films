@@ -153,7 +153,7 @@ class FilmController extends Controller
         | create comment with filmService
         |--------------------------------------------------------------------------
         */
-        $response = $this->filmService->saveComment($request->all());
+        $response = $this->filmService->saveFilm($request->all());
 
         /*
         |--------------------------------------------------------------------------

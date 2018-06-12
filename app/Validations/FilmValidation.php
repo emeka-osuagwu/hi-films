@@ -17,7 +17,6 @@ class FilmValidation
 			'name' => 'required',
 			'video_url' => 'required|string',
 			'description' => 'required|string',
-			'realease_date' => 'required|date',
 			'rating' => 'required|integer',
 			'ticket_price' => 'required|string',
 			'country' => 'required|string',

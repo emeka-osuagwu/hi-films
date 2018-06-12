@@ -2,6 +2,8 @@
 
 namespace App\Models;
 
+use Carbon\Carbon;
+use App\Models\FilmGenre;
 use Illuminate\Database\Eloquent\Model;
 
 class Film extends Model
@@ -26,12 +28,32 @@ class Film extends Model
 
     /*
     |--------------------------------------------------------------------------
-    | encrypt password
+    | setSlugAttribute
     |--------------------------------------------------------------------------
     */
     public function setSlugAttribute($value)
     {
-        $this->attributes['slug'] =  str_slug($value, '-');;
+        $this->attributes['slug'] =  str_slug($value, '-');
+    }
+
+    /*
+    |--------------------------------------------------------------------------
+    | convert created_at
+    |--------------------------------------------------------------------------
+    */
+    public function getCreatedAtAttribute($value)
+    {
+        return Carbon::parse($value)->diffForHumans();
+    }
+
+    /*
+    |--------------------------------------------------------------------------
+    | convert realease_date
+    |--------------------------------------------------------------------------
+    */
+    public function getRealeaseDateAttribute($value)
+    {
+        return Carbon::parse($value)->diffForHumans();
     }
 
     /*
