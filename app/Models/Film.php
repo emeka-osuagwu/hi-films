@@ -84,7 +84,7 @@ class Film extends Model
     */
     public function getGenresAttribute($value)
     {
-        return FilmGenre::where('film_id', $this->id)->get();
+        return FilmGenre::with('genre')->where('film_id', $this->id)->get();
     }
 
     /*
